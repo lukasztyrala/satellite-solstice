@@ -1,0 +1,19 @@
+---
+const platform = "github";
+const username = "lukasztyrala";
+
+import Social from './Social.astro';
+---
+
+<style>
+  footer {
+    display: flex;
+    gap: .5rem;
+    margin-top: 1rem;
+  }
+</style>
+
+<footer>
+  <Social platform="github" username="lukasztyrala"/>
+  <Social platform="discord" username="lukasz.42" />
+</footer>
