@@ -1,5 +1,18 @@
 ---
 const pageTitle = "About";
+
+const identity = {
+  firstName: "Łukasz",
+  country: "Polanda",
+  occupation: "Designer",
+  hobbies: ["hiking", "runnig", "biking"],
+};
+
+const skills = ["Astro", "UX", "IA", "IxD", "UI", "UXR"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
 ---
 
 <html lang="en">
@@ -21,6 +34,16 @@ const pageTitle = "About";
 
     <h1>{pageTitle}</h1>
 		<code>Initialising about page…</code>
+    <p>Hi, this is {identity.firstName}. I am a {identity.occupation} from {identity.country}.</p>
+    <p>I like {identity.hobbies[0]} and {identity.hobbies[1]}.</p>
+    <p> My skills are:{skills.map((skill) => <code> {skill}</code>)}.</p>
+
+    {happy && <p>I am happy to be learning Astro!</p>}
+
+    {finished && <p>I finished this tutorial!</p>}
+    
+    {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
+
   </body>
 
 </html>
