@@ -1,5 +1,46 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogPost from '../../components/BlogPost.astro';
 const pageTitle = "Tag Index";
+
+const allPosts = await Astro.glob('../posts/*.md');
+const uniqueTags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
+
 ---
-<BaseLayout pageTitle={pageTitle}></BaseLayout>
+<BaseLayout pageTitle={pageTitle}>
+  <ul class="tags">
+    {uniqueTags.map((tag) => (
+      <li class="tag">
+        <a href={`/tags/${tag}`}>{tag}</a>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
+
+<style>
+  a {
+    color: #00539F;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  li.tag {
+    list-style-type: none;
+    margin: 0.5em;
+  }
+
+  .tag a {
+    border: dashed 1px #a1a1a1;
+    border-radius: .5em;
+    padding: .5em 1em;
+    font-size: 1.15em;
+    background-color: #F8FCFD;
+  }
+</style>

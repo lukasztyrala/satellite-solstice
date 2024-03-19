@@ -8,4 +8,39 @@ const { frontmatter } = Astro.props;
   <p>Written by: {frontmatter.author}</p>
   <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
   <slot />
+
+  <ul class="tags">
+    {frontmatter.tags.map((tag) => (
+      <li class="tag"><a href={`/tags/${tag}`}>{tag}</a></li>
+    ))}
+  </ul>
+
 </BaseLAyout>
+
+<style>
+  a {
+    color: #00539F;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  li.tag {
+    list-style-type: none;
+    margin: 0.5em;
+  }
+
+  .tag a {
+    border: dashed 1px #a1a1a1;
+    border-radius: .5em;
+    padding: .5em 1em;
+    font-size: 1.15em;
+    background-color: #F8FCFD;
+  }
+</style>
